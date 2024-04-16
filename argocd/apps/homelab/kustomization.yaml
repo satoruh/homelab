@@ -7,3 +7,4 @@ resources:
 - application.yaml
 - victoria-metrics-operator.yaml
 - vmcluster.yaml
+- monitoring.yaml
