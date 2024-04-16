@@ -6,7 +6,11 @@ spec:
   retentionPeriod: "12"
   vmstorage:
     replicaCount: 2
+    extraArgs:
+      dedup.minScrapeInterval: 30s
   vmselect:
     replicaCount: 2
+    extraArgs:
+      dedup.minScrapeInterval: 30s
   vminsert:
     replicaCount: 2
