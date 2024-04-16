@@ -5,3 +5,4 @@ namespace: argocd
 
 resources:
 - application.yaml
+- victoria-metrics-operator.yaml
