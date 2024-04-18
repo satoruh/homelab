@@ -7,4 +7,5 @@ resources:
 - node-exporter-daemonset.yaml
 - vmagent
 - node-metrics-vmnodescrape.yaml
+- kubelet-vmnodescrape.yaml
 - apiserver-vmservicescrape.yaml
