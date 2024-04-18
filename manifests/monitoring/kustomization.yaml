@@ -7,3 +7,4 @@ resources:
 - node-exporter-daemonset.yaml
 - vmagent
 - vmnodescrape.yaml
+- apiserver-vmservicescrape.yaml
