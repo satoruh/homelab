@@ -9,3 +9,4 @@ resources:
 - node-metrics-vmnodescrape.yaml
 - kubelet-vmnodescrape.yaml
 - apiserver-vmservicescrape.yaml
+- argocd-vmservicescrape.yaml
