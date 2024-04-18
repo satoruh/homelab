@@ -6,5 +6,5 @@ namespace: monitoring
 resources:
 - node-exporter-daemonset.yaml
 - vmagent
-- vmnodescrape.yaml
+- node-metrics-vmnodescrape.yaml
 - apiserver-vmservicescrape.yaml
