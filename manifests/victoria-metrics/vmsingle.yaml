@@ -1,0 +1,12 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMSingle
+metadata:
+  labels:
+    app.kubernetes.io/name: vmsingle
+    app.kubernetes.io/version: 1.100.1
+  name: vmsingle
+spec:
+  retentionPeriod: "12"
+  image:
+    repository: victoriametrics/victoria-metrics
+    tag: v1.100.1
