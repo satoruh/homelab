@@ -10,7 +10,7 @@ spec:
     path: manifests/victoria-metrics-operator
   destination:
     server: https://kubernetes.default.svc
-    namespace: vm
+    namespace: victoria-metrics-operator
   syncPolicy:
     automated:
       prune: true
