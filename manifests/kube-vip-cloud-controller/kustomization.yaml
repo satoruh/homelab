@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- https://raw.githubusercontent.com/kube-vip/kube-vip-cloud-provider/v0.0.9/manifest/kube-vip-cloud-controller.yaml
+- configmap.yaml
+
+patches:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: kube-vip-cloud-provider
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/env
+      value:
+        - name: KUBEVIP_NAMESPACE
+          value: kube-system

@@ -5,6 +5,7 @@ namespace: argocd
 
 resources:
 - application.yaml
+- kube-vip-cloud-controller.yaml
 - victoria-metrics-operator.yaml
 - victoria-metrics.yaml
 - grafana.yaml

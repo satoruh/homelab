@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-vip-cloud-controller
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/satoruh/homelab.git
+    targetRevision: master
+    path: manifests/kube-vip-cloud-controller
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
