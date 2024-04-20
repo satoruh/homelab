@@ -7,4 +7,5 @@ resources:
 - application.yaml
 - victoria-metrics-operator.yaml
 - victoria-metrics.yaml
+- grafana.yaml
 - monitoring.yaml
