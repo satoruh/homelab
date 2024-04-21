@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: manifests/grafana
+    path: kubernetes/manifests/grafana
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
