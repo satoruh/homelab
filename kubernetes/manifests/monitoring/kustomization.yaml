@@ -9,4 +9,4 @@ resources:
 - node-exporter-vmnodescrape.yaml
 - kubelet-vmnodescrape.yaml
 - apiserver-vmservicescrape.yaml
-- argocd-vmservicescrape.yaml
+- argocd

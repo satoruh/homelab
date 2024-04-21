@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: argocd-server-metrics
+spec:
+  endpoints:
+    - port: metrics
+      tlsConfig:
+        caFile: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+  namespaceSelector:
+    matchNames:
+      - argocd
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server-metrics
