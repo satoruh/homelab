@@ -10,7 +10,6 @@ kubectl apply -k apps/argocd
 
 ### Deploy homelab
 
-
 ```shell
-kubectl apply -k apps/homelab
+kubectl apply -k apps/homelab-apps
 ```

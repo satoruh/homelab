@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homelab
+  name: homelab-apps
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: argocd/apps/homelab
+    path: argocd/apps/homelab-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
