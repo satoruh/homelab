@@ -1,0 +1,59 @@
+- hosts: proxmox_server
+  gather_facts: False
+
+  tasks:
+  - include_vars:
+      file: ../vars.yaml
+
+  - name: Download image
+    get_url:
+      url: "{{ image_url }}"
+      dest: /tmp/image.qcow2
+
+  - name: Generate sshkeys file
+    copy:
+      dest: /tmp/sshkeys
+      content: "{{ authorized_keys | join }}"
+
+  - name: Create VMs
+    shell: |-
+      set -euo pipefail
+      qm create "{{ item.id }}" \
+        --pool {{ proxmox_resource_pool }} \
+        --name "{{ item.hostname }}" \
+        --cores "{{ item.cores }}" \
+        --memory "{{ item.memory }}" \
+        --scsihw virtio-scsi-pci \
+        --scsi0 {{ proxmox_storage }}:0,import-from=/tmp/image.qcow2 \
+        --ciuser cloud-user \
+        --sshkeys /tmp/sshkeys \
+        --ide0 local-lvm:cloudinit \
+        --boot order=scsi0 \
+        --serial0 socket \
+        --vga serial0 \
+        --net0 virtio,bridge={{ item.bridge }},tag={{ item.vlan }} \
+        --ipconfig0 "ip={{ item.ip }},gw={{ item.gateway }}" \
+        --nameserver "{{ item.nameserver }}"
+    with_items: "{{ kubernetes_nodes }}"
+
+  - name: Resize disk
+    shell: qm resize "{{ item.id }}" scsi0 "{{ item.disksize }}"
+    with_items: "{{ kubernetes_nodes }}"
+
+  - name: Start VMs
+    shell: qm start "{{ item.id }}"
+    with_items: "{{ kubernetes_nodes }}"
+
+- hosts: kubernetes_control_planes:kubernetes_workers
+  gather_facts: False
+
+  tasks:
+  - name: Wait for connection
+    wait_for_connection:
+
+  - name: Wait for cloud-init to finish
+    shell: cloud-init status --wait
+
+  - name: Reboot
+    become: yes
+    reboot:

@@ -1,0 +1,12 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+certificateKey: {{ certificate_key }}
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+clusterName: {{ kubernetes_cluster_name }}
+kubernetesVersion: stable-{{ kubernetes_version }}
+controlPlaneEndpoint: {{ control_plane_endpoint_addr }}:{{ control_plane_endpoint_port }}
+networking:
+  serviceSubnet: {{ service_cidr }}
+  podSubnet: {{ pod_network_cidr }}
