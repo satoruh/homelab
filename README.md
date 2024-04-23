@@ -30,3 +30,10 @@ kubeadmを使ってKubernetes Clusterを構築します。
 cd ansible
 ansible-playbook -i inventory.yaml site.yaml
 ```
+
+### Argo CDをデプロイする
+
+```
+cd argocd
+kubectl apply -k apps/argocd/
+```
