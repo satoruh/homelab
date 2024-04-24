@@ -5,6 +5,7 @@ namespace: argocd
 
 resources:
 - apps/homelab-apps.yaml
+- apps/kube-vip.yaml
 - apps/kube-vip-cloud-controller.yaml
 - apps/victoria-metrics-operator.yaml
 - apps/victoria-metrics.yaml

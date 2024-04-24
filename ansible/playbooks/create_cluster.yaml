@@ -15,7 +15,6 @@
         manifest pod \
         --vip "{{ control_plane_endpoint_addr }}" \
         --controlplane \
-        --services \
         --bgp \
         --localAS "{{ kube_vip_localas }}" \
         --bgpRouterID "${BGP_ROUTER_ID}" \

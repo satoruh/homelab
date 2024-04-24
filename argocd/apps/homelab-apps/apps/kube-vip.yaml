@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-vip
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/satoruh/homelab.git
+    targetRevision: master
+    path: kubernetes/manifests/kube-vip
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
