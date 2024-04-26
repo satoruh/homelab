@@ -4,11 +4,11 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- apps/homelab-apps.yaml
-- apps/kube-vip.yaml
-- apps/kube-vip-cloud-controller.yaml
-- apps/contour.yaml
-- apps/victoria-metrics-operator.yaml
-- apps/victoria-metrics.yaml
-- apps/grafana.yaml
-- apps/monitoring.yaml
+- homelab-apps.yaml
+- kube-vip.yaml
+- kube-vip-cloud-controller.yaml
+- contour.yaml
+- victoria-metrics-operator.yaml
+- victoria-metrics.yaml
+- grafana.yaml
+- monitoring.yaml
