@@ -37,10 +37,24 @@ cd ansible
 ansible-playbook -i inventory.yaml bootstrap.yaml
 ```
 
+### cluster-admin なユーザを作成する
+
+control-planeで下記を実行する
+
+```
+sudo kubeadm kubeconfig user --client-name "${USER}" --org system:masters
+```
+
 ### Argo CDをデプロイする
 
 ```
 kubectl apply -k apps/argocd/
+```
+
+### その他のアプリケーションをデプロイする
+
+```
+kubectl apply -f apps/cluster-base/application.yaml
 ```
 
 ## Clean up
