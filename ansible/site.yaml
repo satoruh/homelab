@@ -1,3 +1,0 @@
-- import_playbook: playbooks/create_vms.yaml
-- import_playbook: playbooks/setup_nodes.yaml
-- import_playbook: playbooks/create_cluster.yaml

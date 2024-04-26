@@ -28,7 +28,7 @@ kubeadmを使ってKubernetes Clusterを構築します。
 
 ```
 cd ansible
-ansible-playbook -i inventory.yaml site.yaml
+ansible-playbook -i inventory.yaml bootstrap.yaml
 ```
 
 ### Argo CDをデプロイする

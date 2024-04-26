@@ -1,0 +1,3 @@
+- import_playbook: playbooks/launch_vms.yaml
+- import_playbook: playbooks/setup_nodes.yaml
+- import_playbook: playbooks/bootstrap_cluster.yaml
