@@ -7,6 +7,7 @@ resources:
 - apps/homelab-apps.yaml
 - apps/kube-vip.yaml
 - apps/kube-vip-cloud-controller.yaml
+- apps/contour.yaml
 - apps/victoria-metrics-operator.yaml
 - apps/victoria-metrics.yaml
 - apps/grafana.yaml
