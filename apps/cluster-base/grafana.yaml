@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vmcluster
+  name: grafana
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: kubernetes/manifests/vmcluster
+    path: manifests/grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: vmcluster
+    namespace: grafana
   syncPolicy:
     automated:
       prune: true

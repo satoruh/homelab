@@ -34,7 +34,6 @@ ansible-playbook -i inventory.yaml bootstrap.yaml
 ### Argo CDをデプロイする
 
 ```
-cd argocd
 kubectl apply -k apps/argocd/
 ```
 
