@@ -8,8 +8,8 @@
 kubectl apply -k apps/argocd
 ```
 
-### Deploy homelab
+### Deploy cluster-base
 
 ```shell
-kubectl apply -k apps/homelab-apps
+kubectl apply -k apps/cluster-base
 ```

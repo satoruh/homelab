@@ -1,16 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homelab-apps
+  name: grafana
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: argocd/apps/homelab-apps
+    path: kubernetes/manifests/grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: grafana
   syncPolicy:
     automated:
       prune: true
+    syncOptions:
+      - CreateNamespace=true

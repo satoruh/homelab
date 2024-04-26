@@ -1,16 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-vip-cloud-controller
+  name: victoria-metrics
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: kubernetes/manifests/kube-vip-cloud-controller
+    path: charts/victoria-metrics
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: victoria-metrics
   syncPolicy:
     automated:
       prune: true
+    syncOptions:
+      - CreateNamespace=true

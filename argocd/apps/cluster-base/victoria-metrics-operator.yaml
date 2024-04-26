@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: contour
+  name: victoria-metrics-operator
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: charts/contour
+    path: charts/victoria-metrics-operator
   destination:
     server: https://kubernetes.default.svc
-    namespace: projectcontour
+    namespace: victoria-metrics-operator
   syncPolicy:
     automated:
       prune: true
