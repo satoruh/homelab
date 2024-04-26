@@ -5,9 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 17.0.7
-    chart: contour
+    repoURL: https://github.com/satoruh/homelab.git
+    targetRevision: master
+    path: charts/contour
   destination:
     server: https://kubernetes.default.svc
     namespace: projectcontour
