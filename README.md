@@ -37,3 +37,12 @@ ansible-playbook -i inventory.yaml site.yaml
 cd argocd
 kubectl apply -k apps/argocd/
 ```
+
+## Clean up
+
+VMを削除する
+
+```
+cd ansible
+ansbile-playbook -i inventory.yaml playbooks/cleanup.yaml
+```

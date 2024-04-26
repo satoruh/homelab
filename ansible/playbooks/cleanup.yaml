@@ -1,0 +1,14 @@
+- hosts: proxmox_server
+  gather_facts: False
+
+  tasks:
+  - include_vars:
+      file: ../vars.yaml
+
+  - name: Stop VMs
+    shell: qm stop "{{ item.id }}"
+    with_items: "{{ kubernetes_nodes }}"
+
+  - name: Destroy VMs
+    shell: qm destroy "{{ item.id }}"
+    with_items: "{{ kubernetes_nodes }}"
