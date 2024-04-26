@@ -5,12 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://victoriametrics.github.io/helm-charts/
-    targetRevision: 0.11.15
-    chart: victoria-metrics-cluster
-    helm:
-      valueFiles:
-      - values.yaml
+    repoURL: https://github.com/satoruh/homelab.git
+    targetRevision: master
+    path: charts/victoria-metrics
   destination:
     server: https://kubernetes.default.svc
     namespace: victoria-metrics

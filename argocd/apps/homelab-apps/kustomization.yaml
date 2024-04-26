@@ -9,6 +9,6 @@ resources:
 - kube-vip-cloud-controller.yaml
 - contour.yaml
 - victoria-metrics-operator/application.yaml
-- victoria-metrics/application.yaml
+- victoria-metrics.yaml
 - grafana.yaml
 - monitoring.yaml
