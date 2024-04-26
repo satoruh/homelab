@@ -20,6 +20,12 @@ brew install ansible
 brew install argocd
 ```
 
+### Helm
+
+```
+brew install helm
+```
+
 ## Instructions
 
 ### Kubernetes Clusterを作成する
