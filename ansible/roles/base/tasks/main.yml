@@ -1,0 +1,6 @@
+---
+- import_tasks: prerequisites.yaml
+- import_tasks: containerd.yaml
+- import_tasks: kubernetes.yaml
+  vars:
+    kubernetes_version: "{{ kubernetes_version }}"

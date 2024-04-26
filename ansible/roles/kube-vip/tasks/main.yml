@@ -1,0 +1,6 @@
+---
+- name: Create pod manifest for kube-vip
+  become: yes
+  template:
+    src: ./templates/kube-vip.yaml.j2
+    dest: /etc/kubernetes/manifests/kube-vip.yaml

@@ -1,0 +1,30 @@
+---
+- name: Add kubernetes repository
+  become: yes
+  block:
+  - name: kubernetes | apt key
+    get_url:
+      url: "https://pkgs.k8s.io/core:/stable:/v{{ kubernetes_version }}/deb/Release.key"
+      dest: /etc/apt/keyrings/kubernetes.asc
+  - name: kubernetes | apt source
+    apt_repository:
+      repo: "deb [signed-by=/etc/apt/keyrings/kubernetes.asc] https://pkgs.k8s.io/core:/stable:/v{{ kubernetes_version }}/deb/ /"
+
+- name: Install kubeadm, kubelet and kubectl
+  become: yes
+  apt:
+    name:
+    - kubeadm
+    - kubelet
+    - kubectl
+  notify: Restart kubelet
+
+- name: Hold packages
+  become: yes
+  dpkg_selections:
+    selection: hold
+    name: "{{ item }}"
+  with_items:
+  - kubeadm
+  - kubelet
+  - kubectl

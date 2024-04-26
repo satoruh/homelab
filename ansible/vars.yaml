@@ -1,7 +1,7 @@
 kubernetes_cluster_name: k01
-kubernetes_version: 1.29
-calico_version: 3.27.3
-kube_vip_version: 0.8.0
+kubernetes_version: "1.30"
+calico_version: "3.27.3"
+kube_vip_version: "0.8.0"
 
 authorized_keys:
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICyAkItUqKGajTGSFKrGvJHL+Da5vOVG3Xd5Sj7UUAhK
@@ -64,8 +64,7 @@ kubernetes_nodes:
 - *kubernetes_workers
 
 kube_vip_image: "ghcr.io/kube-vip/kube-vip:v{{kube_vip_version}}"
-kube_vip_localas: "65000"
-kube_vip_peer_address: 10.15.1.1
+kube_vip_bgp_peeraddress: 10.15.1.1
 
 control_plane_endpoint_addr: 10.15.1.10
 control_plane_endpoint_port: 6443

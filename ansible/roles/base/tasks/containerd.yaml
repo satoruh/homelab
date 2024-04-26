@@ -1,0 +1,24 @@
+---
+- name: Add docker repository
+  become: yes
+  block:
+  - name: docker | apt key
+    get_url:
+      url: "https://download.docker.com/linux/ubuntu/gpg"
+      dest: /etc/apt/keyrings/docker.asc
+  - name: docker | apt source
+    apt_repository:
+      repo: "deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu jammy stable"
+
+- name: Install containerd.io
+  become: yes
+  apt:
+    name:
+    - containerd.io
+
+- name: Configure cgroup driver
+  become: yes
+  copy:
+    src: ./files/containerd-config.toml
+    dest: /etc/containerd/config.toml
+  notify: Restart containerd
