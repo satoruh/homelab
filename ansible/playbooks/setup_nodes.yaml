@@ -5,8 +5,8 @@
   - include_vars:
       file: ../vars.yaml
 
-  - name: base
+  - name: kubernetes-node-base
     import_role:
-      name: base
+      name: kubernetes-node-base
     vars:
       kubernetes_version: "{{ kubernetes_version }}"
