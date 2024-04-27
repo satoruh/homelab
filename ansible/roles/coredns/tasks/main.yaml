@@ -1,2 +1,3 @@
 ---
 - import_tasks: coredns.yaml
+- import_tasks: etcd.yaml

@@ -1,0 +1,70 @@
+---
+- name: Make sysusers.d directory
+  become: yes
+  file:
+    path: /etc/sysusers.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: sysusers.conf
+  become: yes
+  copy:
+    src: ./files/etcd-sysusers.conf
+    dest: /etc/sysusers.d/etcd-sysusers.conf
+
+- name: systemd-sysusers
+  become: yes
+  shell: systemd-sysusers
+
+- name: tmpfiles.conf
+  become: yes
+  copy:
+    src: ./files/etcd-tmpfiles.conf
+    dest: /etc/tmpfiles.d/etcd-tmpfiles.conf
+
+- name: Make directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: etcd
+    group: etcd
+    mode: 0755
+  with_items:
+    - /var/lib/etcd/bin
+    - /var/lib/etcd/etc/etcd
+
+- name: Install etcd
+  become: yes
+  unarchive:
+    src: "https://github.com/etcd-io/etcd/releases/download/v{{ etcd_version }}/etcd-v{{ etcd_version }}-linux-amd64.tar.gz"
+    dest: /var/lib/etcd/bin
+    remote_src: yes
+    extra_opts:
+      - --strip-components=1
+      - --wildcards
+    include:
+      - "*/etcd"
+      - "*/etcdctl"
+      - "*/etcdutl"
+    mode: 0755
+  notify: "Restart etcd"
+
+- name: Configure etcd
+  become: yes
+  copy:
+    src: ./files/etcd.conf
+    dest: /var/lib/etcd/etc/etcd/etcd.conf
+    owner: etcd
+    group: etcd
+    mode: 0644
+  notify: "Restart etcd"
+
+- name: etcd.service
+  become: yes
+  template:
+    src: ./files/etcd.service
+    dest: /etc/systemd/system/etcd.service
+  notify: "Restart etcd"

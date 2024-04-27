@@ -1,1 +1,2 @@
 coredns_version: 1.11.1
+etcd_version: 3.5.13

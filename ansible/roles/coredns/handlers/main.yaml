@@ -6,3 +6,11 @@
     enabled: true
     daemon-reload: true
     state: restarted
+
+- name: Restart etcd
+  become: yes
+  systemd:
+    name: etcd
+    enabled: true
+    daemon-reload: true
+    state: restarted
