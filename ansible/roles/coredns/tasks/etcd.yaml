@@ -13,10 +13,12 @@
   copy:
     src: ./files/etcd-sysusers.conf
     dest: /etc/sysusers.d/etcd-sysusers.conf
+  register: etcd_sysusers_conf
 
 - name: systemd-sysusers
   become: yes
   shell: systemd-sysusers
+  when: etcd_sysusers_conf.changed
 
 - name: tmpfiles.conf
   become: yes

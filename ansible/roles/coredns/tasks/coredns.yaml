@@ -13,10 +13,12 @@
   copy:
     src: ./files/coredns-sysusers.conf
     dest: /etc/sysusers.d/coredns-sysusers.conf
+  register: coredns_sysusers_conf
 
 - name: systemd-sysusers
   become: yes
   shell: systemd-sysusers
+  when: coredns_sysusers_conf.changed
 
 - name: tmpfiles.conf
   become: yes
