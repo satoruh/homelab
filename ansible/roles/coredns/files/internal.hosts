@@ -4,7 +4,7 @@
 # lab
 10.15.0.11      vyos01.lab.internal
 10.15.0.12      vyos02.lab.internal
-10.1.0.101      ubuntu01.lab.internal ns01.lab.internal
+10.1.0.101      ubuntu01.lab.internal ns01.lab.internal etcd01.lab.internal
 
 # k01.lab
 10.15.1.10      apiserver.k01.lab.internal
