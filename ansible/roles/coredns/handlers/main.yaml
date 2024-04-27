@@ -1,0 +1,8 @@
+---
+- name: Restart coredns
+  become: yes
+  systemd:
+    name: coredns
+    enabled: true
+    daemon-reload: true
+    state: restarted

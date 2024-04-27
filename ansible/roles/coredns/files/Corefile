@@ -1,0 +1,10 @@
+. {
+  bind eth0
+
+  errors
+  reload
+  hosts /var/lib/coredns/etc/coredns/internal.hosts internal {
+    reload 1s
+  }
+  forward . 1.1.1.1 1.0.0.1
+}

@@ -1,0 +1,66 @@
+---
+- name: Make sysusers.d directory
+  become: yes
+  file:
+    path: /etc/sysusers.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: sysusers.conf
+  become: yes
+  copy:
+    src: ./files/coredns-sysusers.conf
+    dest: /etc/sysusers.d/coredns-sysusers.conf
+
+- name: systemd-sysusers
+  become: yes
+  shell: systemd-sysusers
+
+- name: tmpfiles.conf
+  become: yes
+  copy:
+    src: ./files/coredns-tmpfiles.conf
+    dest: /etc/tmpfiles.d/coredns-tmpfiles.conf
+
+- name: Make directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: coredns
+    group: coredns
+    mode: 0755
+  with_items:
+    - /var/lib/coredns/bin
+    - /var/lib/coredns/etc/coredns
+
+- name: Install coredns
+  become: yes
+  unarchive:
+    src: "https://github.com/coredns/coredns/releases/download/v{{ coredns_version }}/coredns_{{ coredns_version }}_linux_amd64.tgz"
+    dest: /var/lib/coredns/bin/
+    remote_src: yes
+    mode: 0755
+  notify: "Restart coredns"
+
+- name: coredns.service
+  become: yes
+  template:
+    src: ./files/coredns.service
+    dest: /etc/systemd/system/coredns.service
+  notify: "Restart coredns"
+
+- name: Corefile
+  become: yes
+  copy:
+    src: ./files/corefile
+    dest: /var/lib/coredns/etc/coredns/Corefile
+  notify: "Restart coredns"
+
+- name: hosts
+  become: yes
+  copy:
+    src: ./files/internal.hosts
+    dest: /var/lib/coredns/etc/coredns/internal.hosts
