@@ -11,7 +11,7 @@ proxmox_storage: k01
 image_url: https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64-disk-kvm.img
 
 kubernetes_node_default: &kubernetes_node_default
-  disksize: 8G
+  disksize: 32G
 
 kubernetes_control_plane_default: &kubernetes_control_plane_default
   <<: *kubernetes_node_default
