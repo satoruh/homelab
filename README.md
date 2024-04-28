@@ -42,7 +42,8 @@ ansible-playbook -i inventory.yaml bootstrap.yaml
 control-planeで下記を実行する
 
 ```
-sudo kubeadm kubeconfig user --client-name "${USER}" --org system:masters
+kubectl get cm kubeadm-config -n kube-system -o jsonpath='{.data.ClusterConfiguration}' > clusterconfiguration.yaml
+sudo kubeadm kubeconfig user --client-name "${USER}" --org system:masters --config clusterconfiguration.yaml
 ```
 
 ### Argo CDをデプロイする
