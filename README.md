@@ -55,7 +55,8 @@ kubectl apply -k apps/argocd/
 ### その他のアプリケーションをデプロイする
 
 ```
-kubectl apply -f apps/cluster-base/application.yaml
+kubectl apply -f apps/base/application.yaml
+kubectl apply -f apps/monitoring/application.yaml
 ```
 
 ## Clean up
