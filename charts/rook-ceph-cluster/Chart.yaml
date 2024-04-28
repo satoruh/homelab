@@ -1,0 +1,6 @@
+name: rook-ceph-external
+version: 0.1.0
+dependencies:
+- name: rook-ceph-cluster
+  version: v1.14.2
+  repository: https://charts.rook.io/release
