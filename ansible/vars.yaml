@@ -24,7 +24,7 @@ kubernetes_control_plane_default: &kubernetes_control_plane_default
 
 kubernetes_worker_default: &kubernetes_worker_default
   <<: *kubernetes_node_default
-  cores: 2
+  cores: 4
   memory: 4096
   bridge: vmbr0
   vlan: 3842
