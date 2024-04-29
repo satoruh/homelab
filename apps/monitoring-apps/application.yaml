@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: base
+  name: monitoring-apps
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/satoruh/homelab.git
     targetRevision: master
-    path: apps/base
+    path: apps/monitoring-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
