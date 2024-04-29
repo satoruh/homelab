@@ -7,7 +7,19 @@ spec:
   retentionPeriod: "12"
   vmstorage:
     replicaCount: 2
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 16Gi
   vmselect:
     replicaCount: 2
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 2Gi
   vminsert:
     replicaCount: 2
