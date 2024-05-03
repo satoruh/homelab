@@ -1,0 +1,32 @@
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: false
+    ingress:
+      hosts:
+        core: harbor.k01.lab.internal
+      harbor:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: harbor.k01.lab.internal
+
+  externalURL: http://harbor.k01.lab.internal
+
+  ipFamily:
+    ipv6:
+      enabled: false
+
+  metrics:
+    enabled: true
+    core:
+      path: /metrics
+      port: 8001
+    registry:
+      path: /metrics
+      port: 8001
+    jobservice:
+      path: /metrics
+      port: 8001
+    exporter:
+      path: /metrics
+      port: 8001
