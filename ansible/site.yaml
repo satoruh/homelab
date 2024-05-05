@@ -4,3 +4,5 @@
     - ./vars/coredns.yaml
   roles:
     - coredns
+
+- import_playbook: playbooks/setup_nodes.yaml
